@@ -8,8 +8,11 @@ services:
       POSTGRES_DB: dev
     ports:
       - "5430:5432"
+    volumes:
+      - /private/var/lib/postgresql:/var/lib/postgresql
     networks:
       - postgres
+
 
 #  tracker:
 #    depends_on:
