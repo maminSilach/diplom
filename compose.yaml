@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: dev
+    ports:
+      - "5430:5432"
+    networks:
+      - postgres
+
+#  tracker:
+#    depends_on:
+#      - postgres
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    environment:
+#      DB_URL: postgres
+#      DB_PASS: postgres_password
+#      DB_USER: postgres_user
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - postgres
+
+
+networks:
+  postgres:
+    driver: bridge
