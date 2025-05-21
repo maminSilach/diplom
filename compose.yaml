@@ -59,6 +59,19 @@ services:
       MINIO_ROOT_PASSWORD: "admin12345"
 
     command: server /data --console-address ":9001"
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.11
+    container_name: clickhouse-server
+    ports:
+      - "8123:8123"
+    volumes:
+      - ./data:/var/lib/clickhouse
+      - ./logs:/var/log/clickhouse-server
+      - ./users.xml:/etc/clickhouse-server/users.d/users.xml
+    restart: always
+
+
 #  tracker:
 #    depends_on:
 #      - postgres
