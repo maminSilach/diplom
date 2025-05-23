@@ -1,6 +1,5 @@
 package com.example.diplom.entity;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,29 +8,28 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.Accessors;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
+
 @Entity
-@Table(name = "event")
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Event {
+public class User {
 
     @Id
     @Column(name = "id")
     private UUID id = UUID.randomUUID();
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @Column(name = "created")
-    private LocalDateTime created = LocalDateTime.now();
+    @Column(name = "age")
+    private Integer age;
 }

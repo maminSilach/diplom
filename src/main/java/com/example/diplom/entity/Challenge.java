@@ -42,9 +42,6 @@ public class Challenge {
     @Column(name = "imageUri")
     private String imageUri;
 
-    @Column(name = "progress")
-    private BigDecimal progress;
-
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private EntityStatus status = EntityStatus.ARCHIVE;

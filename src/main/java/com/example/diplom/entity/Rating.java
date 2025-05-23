@@ -41,9 +41,6 @@ public class Rating {
     @Column(name = "imageUri")
     private String imageUri;
 
-    @Column(name = "score")
-    private Integer score;
-
     @Column(name = "rule")
     private Integer rules;
 

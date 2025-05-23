@@ -1,6 +1,6 @@
 package com.example.diplom.config;
 
-import com.example.diplom.dto.EventRequest;
+import com.example.diplom.dto.request.EventRequest;
 import com.example.diplom.handler.KafkaExceptionHandler;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

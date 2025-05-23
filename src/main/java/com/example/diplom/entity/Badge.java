@@ -2,7 +2,6 @@ package com.example.diplom.entity;
 
 import com.example.diplom.entity.enums.EntityStatus;
 import com.example.diplom.entity.rules.BadgeRules;
-import com.example.diplom.entity.rules.RatingRules;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
