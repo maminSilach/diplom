@@ -69,7 +69,7 @@ public class EventService {
         eventRepository.deleteById(id);
     }
 
-    private Event loadEvent(UUID id) {
+    public Event loadEvent(UUID id) {
         return eventRepository.findById(id)
                 .orElseThrow(
                         () -> new NotFoundException("Event with id = " + id + " not found")

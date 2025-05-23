@@ -1,12 +1,6 @@
 package com.example.diplom.dto.request;
 
 
-import com.example.diplom.entity.enums.EntityStatus;
-import com.example.diplom.entity.rules.RatingRules;
-import jakarta.persistence.Column;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;

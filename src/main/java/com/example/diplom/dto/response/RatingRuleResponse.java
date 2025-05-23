@@ -1,13 +1,17 @@
-package com.example.diplom.dto.request;
+package com.example.diplom.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class RatingRuleRequest {
+public class RatingRuleResponse {
+
+    private UUID id;
 
     private String name;
 
@@ -15,5 +19,5 @@ public class RatingRuleRequest {
 
     private Integer count;
 
-    private UUID eventId;
+    private EventResponse event;
 }
