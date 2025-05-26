@@ -1,6 +1,7 @@
 package com.example.diplom.handler;
 
 import com.example.diplom.dto.response.ExceptionResponse;
+import com.example.diplom.exception.AwsException;
 import com.example.diplom.exception.NotFoundException;
 import com.example.diplom.exception.NotUniqueException;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,17 @@ public class RestExceptionHandler {
 
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
+                .body(
+                        createExceptionResponse(e.getMessage())
+                );
+    }
+
+    @ExceptionHandler(AwsException.class)
+    public ResponseEntity<ExceptionResponse> awsException(AwsException e) {
+        log.error("Thrown error: ", e);
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(
                         createExceptionResponse(e.getMessage())
                 );

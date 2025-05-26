@@ -1,25 +1,30 @@
 package com.example.diplom.dto.request;
 
 
+import com.example.diplom.entity.enums.EntityStatus;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class RatingRequest {
 
-    private final String name;
+    public String name;
 
-    private final String description;
+    public String description;
 
-    private final MultipartFile image;
+    public String imageUri;
 
-    private final Integer rules;
+    public Integer rules;
 
-    private List<UUID> ratingRuleIds = new ArrayList<>();
+    public EntityStatus status;
+
+    public List<UUID> ratingRuleIds = new ArrayList<>();
 }
