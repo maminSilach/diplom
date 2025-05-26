@@ -44,7 +44,7 @@ public class RatingRuleController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<RatingRuleResponse> updateRatingRules(@PathVariable UUID id, @RequestBody RatingRuleRequest ratingRuleRequest) {
-        RatingRuleResponse ratingRuleResponse = ratingRuleService.updateEvent(id, ratingRuleRequest);
+        RatingRuleResponse ratingRuleResponse = ratingRuleService.updateRatingRule(id, ratingRuleRequest);
         return ResponseEntity.ok(ratingRuleResponse);
     }
 

@@ -1,8 +1,6 @@
 package com.example.diplom.service;
 
-import com.example.diplom.dto.request.EventRequest;
 import com.example.diplom.dto.request.RatingRuleRequest;
-import com.example.diplom.dto.response.EventResponse;
 import com.example.diplom.dto.response.RatingRuleResponse;
 import com.example.diplom.entity.Event;
 import com.example.diplom.entity.rules.RatingRules;
@@ -47,7 +45,7 @@ public class RatingRuleService {
         return ratingRuleMapper.toRatingRulesResponse(loadedRatingRules);
     }
 
-    public RatingRuleResponse updateEvent(UUID id, RatingRuleRequest ratingRuleRequest) {
+    public RatingRuleResponse updateRatingRule(UUID id, RatingRuleRequest ratingRuleRequest) {
         log.info("Start updating rating rules with id = {} and body = {}", id, ratingRuleRequest);
 
         validateRatingRuleByName(ratingRuleRequest.getName());
@@ -77,7 +75,7 @@ public class RatingRuleService {
         ratingRuleRepository.deleteById(id);
     }
 
-    private RatingRules loadRatingRules(UUID id) {
+    public RatingRules loadRatingRules(UUID id) {
         return ratingRuleRepository.findById(id)
                 .orElseThrow(
                         () -> new NotFoundException("Rating rule with id = " + id + " not found")
