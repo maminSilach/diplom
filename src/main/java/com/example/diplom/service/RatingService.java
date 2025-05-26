@@ -63,6 +63,7 @@ public class RatingService {
                 .toList();
     }
 
+    @Transactional
     public RatingResponse updateRating(UUID id, RatingRequest ratingRequest) {
         log.info("Start updating rating with id = {} and body = {}", id, ratingRequest);
 

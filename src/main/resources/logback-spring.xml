@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <define name="name"
+            class="ch.qos.logback.core.property.CanonicalHostNamePropertyDefiner"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%magenta(%d{HH:mm:ss.SSS}) [%thread] %highlight(%-5level) %blue(%logger{36}) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <http>
+            <url>http://localhost:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <label>
+                <pattern>app=DIPLOM,host=${HOSTNAME},level=%level</pattern>
+                <readMarkers>true</readMarkers>
+            </label>
+            <message>
+                <pattern>%magenta(%d{HH:mm:ss.SSS}) [%thread] %highlight(%-5level) %blue(%logger{36}) - %msg%n</pattern>
+            </message>
+        </format>
+    </appender>
+
+    <root level="ERROR">
+        <appender-ref ref="LOKI" />
+    </root>
+
+    <root level="INFO">
+        <appender-ref ref="LOKI" />
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

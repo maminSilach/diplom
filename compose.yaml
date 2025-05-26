@@ -71,21 +71,33 @@ services:
       - ./users.xml:/etc/clickhouse-server/users.d/users.xml
     restart: always
 
+  loki:
+    image: grafana/loki:2.9.0
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - postgres
+  grafana:
+    environment:
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - postgres
 
-#  tracker:
-#    depends_on:
-#      - postgres
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    environment:
-#      DB_URL: postgres
-#      DB_PASS: postgres_password
-#      DB_USER: postgres_user
-#    ports:
-#      - "8080:8080"
-#    networks:
-#      - postgres
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus:/prometheus
+    networks:
+      - postgres
 
 
 networks:
