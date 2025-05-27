@@ -26,8 +26,8 @@ public class RatingRuleController {
 
     @PostMapping
     public ResponseEntity<RatingRuleResponse> createRatingRules(@RequestBody RatingRuleRequest ratingRuleRequest) {
-        RatingRuleResponse eventResponse = ratingRuleService.createRatingRules(ratingRuleRequest);
-        return ResponseEntity.ok(eventResponse);
+        RatingRuleResponse ratingRuleResponse = ratingRuleService.createRatingRules(ratingRuleRequest);
+        return ResponseEntity.ok(ratingRuleResponse);
     }
 
     @GetMapping("/{id}")
